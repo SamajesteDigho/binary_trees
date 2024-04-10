@@ -9,9 +9,12 @@ if (node == NULL)
 {
 return (NULL);
 }
+if (parent == NULL)
+node->parent = NULL;
+else
+node->parent = parent;
 node->n = value;
 node->left = NULL;
 node->right = NULL;
-node->parent = parent;
 return (node);
 }

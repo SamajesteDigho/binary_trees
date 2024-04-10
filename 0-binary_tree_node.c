@@ -11,10 +11,5 @@ node->n = value;
 node->left = NULL;
 node->right = NULL;
 node->parent = parent;
-if (parent != NULL)
-{
-parent->left = node;
-}
-
 return (node);
 }

@@ -31,6 +31,14 @@ return (0);
 return (get_depth(tree) - 1);
 }
 
+/**
+ * level_action - Level Action
+ * @tree: The tree to traverse
+ * @func: operation
+ * @start: Starting
+ * @end: Ending
+ * Description: Apply action on all elements of level
+ */
 void level_action(const binary_tree_t *tree, void (*func)(int),
 int start, int end)
 {

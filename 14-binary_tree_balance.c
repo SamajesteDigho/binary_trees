@@ -19,10 +19,10 @@ return (1 + hr);
 }
 
 /**
- * binary_tree_nodes - Binary Tree Nodes
+ * binary_tree_balance - Binary Tree Balance
  * @tree: The tree to traverse
- * Description: Counting the number of nodes with atleat one child
- * Return: The number of nodes
+ * Description: Get the balance degree of a tree
+ * Return: The balance degree
  */
 int binary_tree_balance(const binary_tree_t *tree)
 {

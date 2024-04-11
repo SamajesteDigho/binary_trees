@@ -24,6 +24,8 @@ const binary_tree_t *second)
 {
 int fd, sd, rollback;
 binary_tree_t *node1, *node2;
+if (first == NULL || second == NULL)
+return (NULL);
 fd = get_node_depth(first);
 sd = get_node_depth(second);
 if (fd >= sd)
@@ -44,22 +46,18 @@ if (node1 != NULL)
 node1 = node1->parent;
 rollback -= 1;
 }
-if ((fd >= sd && node1 == second)
-|| (sd >= fd && node1 == first) || (node1 == node2))
+if ((fd >= sd && node1 == second) || (sd >= fd && node1 == first))
 return (node1);
+else if (node1 == node2)
+return (node2);
 else
 node1 = node1->parent;
 while (node1 != NULL && node2 != NULL)
 {
 if (node1 == node2)
-{
 return (node1);
-}
-else
-{
 node1 = node1->parent;
 node2 = node2->parent;
-}
 }
 return (NULL);
 }

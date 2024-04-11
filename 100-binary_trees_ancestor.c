@@ -23,27 +23,43 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second)
 {
 int fd, sd, rollback;
-binary_tree_t *node;
+binary_tree_t *node1, *node2;
 fd = get_node_depth(first);
 sd = get_node_depth(second);
-
 if (fd >= sd)
 {
-node = first->parent;
-rollback = fd - sd;
+node1 = first->parent;
+node2 = second->parent;
+rollback = fd - sd - 1;
 }
 else
 {
-node = second->parent;
-rollback = sd - fd;
+node1 = second->parent;
+node2 = first->parent;
+rollback = sd - fd - 1;
 }
 while (rollback > 0)
 {
-if (node == first || node == second)
-return (node);
-if (node != NULL)
-node = node->parent;
+if (node1 != NULL)
+node1 = node1->parent;
 rollback -= 1;
 }
-return (node);
+if ((fd >= sd && node1 == second)
+|| (sd >= fd && node1 == first) || (node1 == node2))
+return (node1);
+else
+node1 = node1->parent;
+while (node1 != NULL && node2 != NULL)
+{
+if (node1 == node2)
+{
+return (node1);
+}
+else
+{
+node1 = node1->parent;
+node2 = node2->parent;
+}
+}
+return (NULL);
 }

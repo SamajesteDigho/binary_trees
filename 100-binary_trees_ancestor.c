@@ -16,7 +16,7 @@ return (1 + get_node_depth(tree->parent));
  * binary_trees_ancestor - Binary Trees Ancestor
  * @first: First node
  * @second: Second node
- * Description:
+ * Description: Get the ancestor nearest
  * Return: Ancestor tree
  */
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,

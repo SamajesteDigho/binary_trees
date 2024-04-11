@@ -1,9 +1,9 @@
 #include "binary_trees.h"
 /**
- * binary_tree_preorder - Binary Tree Preorder
+ * binary_tree_inorder - Binary Tree Inorder
  * @tree: The tree to traverse
  * @func: Traversing order function
- * Description: Traverse tree following preorder
+ * Description: Traverse tree following inorder
 */
 void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int))
 {

@@ -36,12 +36,12 @@ return (get_depth(tree->left) - get_depth(tree->right));
  * @tree: Tree concerned
  * Description: Check if left ordering
  * Return: 1 or 0
-*/
+ */
 int check_left_first(const binary_tree_t *tree)
 {
 if (tree == NULL)
 return (1);
-if (tree->left == NULL && tree->right != NULL)
+if ((tree->left == NULL) && (tree->right != NULL))
 return (0);
 return (check_left_first(tree->left) & check_left_first(tree->right));
 }
@@ -55,7 +55,7 @@ return (check_left_first(tree->left) & check_left_first(tree->right));
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
 if (tree == NULL || binary_tree_balance(tree) > 1
-||  check_left_first(tree) == 0)
+|| check_left_first(tree) == 0)
 return (0);
 return (1);
 }

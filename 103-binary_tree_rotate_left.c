@@ -18,5 +18,7 @@ x->right = y->left;
 y->left = x;
 y->parent = x->parent;
 x->parent = y;
+if (x->right != NULL)
+x->right->parent = x;
 return (y);
 }

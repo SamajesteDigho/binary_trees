@@ -27,20 +27,20 @@ binary_tree_t *node1, *node2;
 if (first == NULL || second == NULL)
 return (NULL);
 if (first == second)
-return ((binary_tree_t *) first);
+return ((binary_tree_t *)first);
 fd = get_node_depth(first);
 sd = get_node_depth(second);
 if (fd >= sd)
 {
-node1 = first->parent;
-node2 = second->parent;
-rollback = fd - sd - 1;
+node1 = (binary_tree_t *)first;
+node2 = (binary_tree_t *)second;
+rollback = fd - sd;
 }
 else
 {
-node1 = second->parent;
-node2 = first->parent;
-rollback = sd - fd - 1;
+node1 = (binary_tree_t *)second;
+node2 = (binary_tree_t *)first;
+rollback = sd - fd;
 }
 while (rollback > 0)
 {
@@ -48,18 +48,14 @@ if (node1 != NULL)
 node1 = node1->parent;
 rollback -= 1;
 }
-if ((fd >= sd && node1 == second) || (sd >= fd && node1 == first))
-return (node1);
-else if (node1 == node2)
-return (node2);
-else
-node1 = node1->parent;
-while (node1 != NULL && node2 != NULL)
-{
 if (node1 == node2)
 return (node1);
+while (node1 != NULL && node2 != NULL)
+{
 node1 = node1->parent;
 node2 = node2->parent;
+if (node1 == node2)
+return (node1);
 }
 return (NULL);
 }

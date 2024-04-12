@@ -26,6 +26,8 @@ int fd, sd, rollback;
 binary_tree_t *node1, *node2;
 if (first == NULL || second == NULL)
 return (NULL);
+if (first == second)
+return ((binary_tree_t *) first);
 fd = get_node_depth(first);
 sd = get_node_depth(second);
 if (fd >= sd)

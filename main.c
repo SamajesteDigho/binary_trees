@@ -3,17 +3,26 @@
 /**
  * main - Entry point
  *
- * Return: Always 0 (Success)
+ * Return: 0 on success, error code on failure
  */
 int main(void)
 {
-	binary_tree_t *first, *second, *ancestor;
+    binary_tree_t *root;
 
-	first = NULL;
-	second = NULL;
-	ancestor = binary_trees_ancestor(first, second);
-	printf("Lowest common ancestor of (%p) and (%p) is: ", (void *)first, (void *)second);
-	printf("%p\n", (void *)ancestor);
+    root = binary_tree_node(NULL, 98);
+    root->right = binary_tree_node(root, 128);
+    root->right->right = binary_tree_node(root->right, 402);
+    binary_tree_print(root);
+    printf("Rotate-left %d\n", root->n);
+    root = binary_tree_rotate_left(root);
+    binary_tree_print(root);
+    printf("\n");
 
-	return (0);
+    root->right->right = binary_tree_node(root->right, 450);
+    root->right->left = binary_tree_node(root->right, 420);
+    binary_tree_print(root);
+    printf("Rotate-left %d\n", root->n);
+    root = binary_tree_rotate_left(root);
+    binary_tree_print(root);
+    return (0);
 }
